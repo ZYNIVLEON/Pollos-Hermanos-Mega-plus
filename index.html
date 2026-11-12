@@ -1,911 +1,199 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pollos Hermanos | El Auténtico Sabor Asado y Broaster</title>
-    <meta name="description" content="Pollos Hermanos: El mejor pollo asado al carbón, pollo broaster súper crujiente, alitas BBQ y combos familiares. ¡Pide fácil por WhatsApp!">
-    
-    <!-- Google Fonts: Montserrat para títulos impactantes y Poppins para lectura limpia -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS vía CDN (Ideal para GitHub Pages sin compilación) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Configuración personalizada de colores y fuentes en Tailwind -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Poppins', 'sans-serif'],
-                        display: ['Montserrat', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            red: '#D90429',      // Rojo vibrante principal
-                            darkRed: '#9B001D',  // Rojo profundo para hover/sombras
-                            crimson: '#EF233C',  // Rojo claro para acentos
-                            gold: '#FFB703',     // Dorado crujiente / pollo asado
-                            light: '#F8F9FA',    // Blanco humo suave para fondos alternos
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
-    <!-- Estilos CSS adicionales mínimos para animaciones suaves y barra de desplazamiento -->
-    <style>
-        /* Personalización sutil de scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #D90429;
-            border-radius: 9999px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #9B001D;
-        }
-        
-        /* Animación de pulso suave para el botón flotante de WhatsApp */
-        @keyframes pulse-ring {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
-        .whatsapp-pulse {
-            animation: pulse-ring 2s infinite;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pollos Hermanos | El Sabor Más Crujiente</title>
+  <!-- Fuentes de Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <!-- Iconos FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Hoja de estilos -->
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-white text-gray-800 antialiased selection:bg-brand-red selection:text-white">
+<body>
 
-    <!-- =========================================================================
-         1. BARRA DE NAVEGACIÓN FIJA (STICKY NAVBAR)
-         ========================================================================= -->
-    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-md border-b border-red-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                
-                <!-- Logo SVG Personalizado de Pollos Hermanos -->
-                <a href="#inicio" class="flex items-center gap-3 group focus:outline-none">
-                    <div class="w-12 h-12 bg-brand-red rounded-2xl flex items-center justify-center shadow-lg shadow-red-500/30 group-hover:scale-105 transition-transform duration-300">
-                        <!-- Ícono Vectorial Original (Pollo + Corona + Llama) -->
-                        <svg class="w-8 h-8 text-white" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Corona dorada superior -->
-                            <path d="M20 16L24 9L32 14L40 9L44 16H20Z" fill="#FFB703"/>
-                            <!-- Silueta estilizada de pollo/cresta y cuerpo -->
-                            <path d="M44 26C44 21.5817 40.4183 18 36 18H28C22.4772 18 18 22.4772 18 28V36C18 43.732 24.268 50 32 50C39.732 50 46 43.732 46 36V31L52 28L44 26Z" fill="white"/>
-                            <!-- Detalle del ala / llama roja -->
-                            <path d="M26 33C26 30.2386 28.2386 28 31 28C33.7614 28 36 30.2386 36 33C36 36.5 32 40 31 41C30 40 26 36.5 26 33Z" fill="#D90429"/>
-                            <!-- Ojo -->
-                            <circle cx="40" cy="25" r="2" fill="#D90429"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <span class="font-display font-black text-xl sm:text-2xl tracking-tight text-brand-red block leading-none">
-                            POLLOS <span class="text-gray-900">HERMANOS</span>
-                        </span>
-                        <span class="text-[11px] font-semibold uppercase tracking-widest text-gray-500">
-                            Asado &bull; Broaster &bull; Alitas
-                        </span>
-                    </div>
-                </a>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container nav-content">
+      <a href="#inicio" class="logo">
+        <i class="fas fa-drumstick-bite"></i> POLLOS <span>HERMANOS</span>
+      </a>
+      <nav class="nav-links" id="nav-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#menu">Menú</a>
+        <a href="#galeria">Galería</a>
+        <a href="#ubicacion">Ubicación</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="cart-btn" id="open-cart-btn" aria-label="Abrir carrito">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-badge" id="cart-count">0</span>
+        </button>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
 
-                <!-- Enlaces de Navegación (Desktop) -->
-                <nav class="hidden md:flex items-center space-x-8 font-medium text-sm">
-                    <a href="#inicio" class="text-gray-700 hover:text-brand-red transition-colors">Inicio</a>
-                    <a href="#menu" class="text-gray-700 hover:text-brand-red transition-colors">Menú</a>
-                    <a href="#galeria" class="text-gray-700 hover:text-brand-red transition-colors">Galería</a>
-                    <a href="#ubicacion" class="text-gray-700 hover:text-brand-red transition-colors">Horarios y Ubicación</a>
-                </nav>
+  <!-- HERO SECTION -->
+  <section id="inicio" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <span class="badge-hero">🔥 Receta Secreta de la Casa</span>
+      <h1>CRUJIENTE POR FUERA, <span>JUGOSO POR DENTRO</span></h1>
+      <p>El auténtico pollo broaster, asado al carbón y las mejores alitas bañadas en salsa. Pide fácil y recíbelo caliente en la puerta de tu casa.</p>
+      <div class="hero-buttons">
+        <a href="#menu" class="btn btn-primary">Ver Menú</a>
+        <a href="#ubicacion" class="btn btn-outline">Horarios y Local</a>
+      </div>
+    </div>
+  </section>
 
-                <!-- Botones de Acción (Carrito + Menú Móvil) -->
-                <div class="flex items-center gap-3">
-                    <!-- Botón Abrir Carrito -->
-                    <button onclick="toggleCart()" class="relative bg-brand-red hover:bg-brand-darkRed text-white px-4 py-2.5 rounded-full font-semibold text-sm flex items-center gap-2 shadow-md shadow-red-500/25 transition-all active:scale-95 cursor-pointer">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                        </svg>
-                        <span class="hidden sm:inline">Mi Pedido</span>
-                        <span id="cart-badge" class="bg-brand-gold text-gray-900 font-display font-extrabold text-xs px-2 py-0.5 rounded-full">0</span>
-                    </button>
+  <!-- MENÚ INTERACTIVO -->
+  <section id="menu" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>NUESTRO <span>MENÚ</span></h2>
+        <p>Elige tus favoritos, agrégalos al pedido y envíalo directo por WhatsApp.</p>
+      </div>
 
-                    <!-- Botón Hamburguesa (Móvil) -->
-                    <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-xl text-gray-700 hover:bg-red-50 hover:text-brand-red focus:outline-none" aria-label="Abrir menú">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
+      <!-- Filtros de categoría -->
+      <div class="menu-filters" id="menu-filters">
+        <button class="filter-btn active" data-category="todos">Todos</button>
+        <button class="filter-btn" data-category="combos">Combos Broaster</button>
+        <button class="filter-btn" data-category="asado">Pollo Asado</button>
+        <button class="filter-btn" data-category="alitas">Alitas & Snacks</button>
+        <button class="filter-btn" data-category="bebidas">Bebidas</button>
+      </div>
+
+      <!-- Grid de productos (se llena con JS) -->
+      <div class="menu-grid" id="menu-grid"></div>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section id="galeria" class="section bg-light">
+    <div class="container">
+      <div class="section-header">
+        <h2>GALERÍA DEL <span>SABOR</span></h2>
+        <p>Preparado al momento con ingredientes frescos todos los días.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=800&q=80" alt="Pollo frito crujiente">
+          <div class="gallery-caption">Combo Familiar Broaster</div>
         </div>
-
-        <!-- Menú Desplegable Móvil -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-4 pt-3 pb-5 space-y-2 shadow-lg">
-            <a href="#inicio" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl text-base font-medium text-gray-800 hover:bg-red-50 hover:text-brand-red">Inicio</a>
-            <a href="#menu" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl text-base font-medium text-gray-800 hover:bg-red-50 hover:text-brand-red">Menú Completo</a>
-            <a href="#galeria" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl text-base font-medium text-gray-800 hover:bg-red-50 hover:text-brand-red">Galería de Platos</a>
-            <a href="#ubicacion" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl text-base font-medium text-gray-800 hover:bg-red-50 hover:text-brand-red">Horarios y Ubicación</a>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=800&q=80" alt="Pollo asado entero">
+          <div class="gallery-caption">Pollo Asado al Carbón</div>
         </div>
-    </header>
-
-    <!-- =========================================================================
-         2. HERO SECTION (PORTADA PRINCIPAL)
-         ========================================================================= -->
-    <section id="inicio" class="relative overflow-hidden bg-gradient-to-br from-brand-red via-brand-crimson to-brand-darkRed text-white">
-        <!-- Patrón decorativo de fondo -->
-        <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#ffffff 2px, transparent 2px); background-size: 32px 32px;"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                
-                <!-- Columna de Texto -->
-                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
-                    <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 px-4 py-1.5 rounded-full text-sm font-semibold text-brand-gold">
-                        <span>🔥</span>
-                        <span>Receta Secreta &bull; 100% Fresco Cada Día</span>
-                    </div>
-                    
-                    <h1 class="font-display font-black text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight">
-                        El Sabor Crujiente que <span class="text-brand-gold underline decoration-4 underline-offset-8">Une a la Familia</span>
-                    </h1>
-                    
-                    <p class="text-lg sm:text-xl text-red-50 max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
-                        Disfruta de nuestro famoso <strong>pollo broaster extra crujiente</strong>, jugoso <strong>pollo asado al carbón</strong> y alitas bañadas en salsas artesanales. ¡Directo a tu mesa caliente y rápido!
-                    </p>
-                    
-                    <!-- Botones de Acción Principales -->
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
-                        <a href="#menu" class="bg-white text-brand-red hover:bg-brand-gold hover:text-gray-900 font-display font-extrabold px-8 py-4 rounded-2xl text-base shadow-xl transition-all duration-300 flex items-center justify-center gap-2">
-                            <span>🍗</span>
-                            <span>Ver Menú y Combos</span>
-                        </a>
-                        <button onclick="pedirDirectoWhatsApp()" class="bg-green-500 hover:bg-green-600 text-white font-display font-bold px-8 py-4 rounded-2xl text-base shadow-xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer">
-                            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/></svg>
-                            <span>Pedir por WhatsApp</span>
-                        </button>
-                    </div>
-
-                    <!-- Indicadores de Confianza -->
-                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/20 max-w-lg mx-auto lg:mx-0">
-                        <div>
-                            <p class="font-display font-black text-2xl sm:text-3xl text-brand-gold">30 min</p>
-                            <p class="text-xs sm:text-sm text-red-100">Domicilio Express</p>
-                        </div>
-                        <div>
-                            <p class="font-display font-black text-2xl sm:text-3xl text-brand-gold">4.9 ★</p>
-                            <p class="text-xs sm:text-sm text-red-100">+2.500 Clientes Felices</p>
-                        </div>
-                        <div>
-                            <p class="font-display font-black text-2xl sm:text-3xl text-brand-gold">100%</p>
-                            <p class="text-xs sm:text-sm text-red-100">Pollo Fresco del Día</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Columna Visual (Imagen Destacada con Insignia de Oferta) -->
-                <div class="lg:col-span-5 relative">
-                    <div class="relative mx-auto max-w-md lg:max-w-none">
-                        <!-- Resplandor detrás de la imagen -->
-                        <div class="absolute -inset-4 bg-brand-gold/30 rounded-full blur-2xl"></div>
-                        
-                        <div class="relative rounded-3xl overflow-hidden border-4 border-white shadow-2xl transform lg:rotate-2 hover:rotate-0 transition-transform duration-500">
-                            <img 
-                                src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=900&q=80" 
-                                alt="Cubeta de Pollo Broaster Crujiente Pollos Hermanos" 
-                                class="w-full h-80 sm:h-96 object-cover"
-                                onerror="this.src='https://placehold.co/800x600/D90429/FFFFFF?text=Pollos+Hermanos'"
-                            >
-                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6">
-                                <span class="bg-brand-red text-white text-xs font-bold uppercase px-3 py-1 rounded-full">Más Vendido</span>
-                                <h3 class="font-display font-bold text-xl text-white mt-2">Combo Familiar Hermanos</h3>
-                                <p class="text-sm text-gray-200">8 presas broaster + papas + arepas + gaseosa 1.5L</p>
-                            </div>
-                        </div>
-
-                        <!-- Etiqueta Flotante de Precio -->
-                        <div class="absolute -top-5 -right-3 sm:-right-6 bg-brand-gold text-gray-900 rounded-2xl p-4 shadow-xl border-2 border-white transform -rotate-6">
-                            <p class="text-xs font-bold uppercase tracking-wider">Desde</p>
-                            <p class="font-display font-black text-2xl leading-none">$18.000</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=800&q=80" alt="Alitas BBQ">
+          <div class="gallery-caption">Alitas BBQ & Picantes</div>
         </div>
-        
-        <!-- Separador ondulado blanco inferior -->
-        <div class="w-full overflow-hidden leading-none">
-            <svg class="relative block w-full h-8 sm:h-12" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,119.39,192.39,103.5Z" fill="#F8F9FA"></path>
-            </svg>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1615557960916-5f4791effe9d?auto=format&fit=crop&w=800&q=80" alt="Hamburguesa de pollo">
+          <div class="gallery-caption">Crispy Chicken Burger</div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- =========================================================================
-         3. MENÚ INTERACTIVO CON FILTROS Y CARRITO
-         ========================================================================= -->
-    <section id="menu" class="py-16 sm:py-24 bg-brand-light">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <!-- Encabezado de Sección -->
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <span class="text-brand-red font-bold uppercase tracking-widest text-sm">Nuestra Carta</span>
-                <h2 class="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-gray-900 mt-2">
-                    Elige tu Favorito y <span class="text-brand-red">Ármalo a tu Gusto</span>
-                </h2>
-                <p class="text-gray-600 mt-4 text-base sm:text-lg">
-                    Selecciona los platos que deseas, ajusta las cantidades en tu carrito y envíanos tu pedido directo por WhatsApp en un clic.
-                </p>
-            </div>
-
-            <!-- Botones de Filtro por Categoría -->
-            <div id="category-filters" class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-12">
-                <button onclick="filterMenu('todos')" class="filter-btn active bg-brand-red text-white px-5 py-2.5 rounded-full font-semibold text-sm shadow-md transition-all cursor-pointer" data-category="todos">
-                    🍽️ Todos
-                </button>
-                <button onclick="filterMenu('broaster')" class="filter-btn bg-white text-gray-700 hover:bg-red-50 hover:text-brand-red px-5 py-2.5 rounded-full font-semibold text-sm shadow-sm border border-gray-200 transition-all cursor-pointer" data-category="broaster">
-                    🍗 Pollo Broaster
-                </button>
-                <button onclick="filterMenu('asado')" class="filter-btn bg-white text-gray-700 hover:bg-red-50 hover:text-brand-red px-5 py-2.5 rounded-full font-semibold text-sm shadow-sm border border-gray-200 transition-all cursor-pointer" data-category="asado">
-                    🔥 Pollo Asado
-                </button>
-                <button onclick="filterMenu('combos')" class="filter-btn bg-white text-gray-700 hover:bg-red-50 hover:text-brand-red px-5 py-2.5 rounded-full font-semibold text-sm shadow-sm border border-gray-200 transition-all cursor-pointer" data-category="combos">
-                    👨‍👩‍👧‍👦 Combos y Alitas
-                </button>
-                <button onclick="filterMenu('acompanamientos')" class="filter-btn bg-white text-gray-700 hover:bg-red-50 hover:text-brand-red px-5 py-2.5 rounded-full font-semibold text-sm shadow-sm border border-gray-200 transition-all cursor-pointer" data-category="acompanamientos">
-                    🍟 Acompañamientos y Bebidas
-                </button>
-            </div>
-
-            <!-- Grid Dinámico de Productos (Se llena desde JavaScript) -->
-            <div id="menu-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Las tarjetas se renderizan automáticamente aquí -->
-            </div>
-
+  <!-- UBICACIÓN Y HORARIOS -->
+  <section id="ubicacion" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>VISÍTANOS O <span>PIDE A DOMICILIO</span></h2>
+        <p>Estamos listos para atenderte con la mejor energía.</p>
+      </div>
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <h3>Dirección</h3>
+          <p>Av. Principal #45-20, Local 3<br>Zona Gastronómica, Ciudad</p>
         </div>
-    </section>
-
-    <!-- =========================================================================
-         4. BANNER PROMOCIONAL INTERMEDIO
-         ========================================================================= -->
-    <section class="bg-brand-red text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-            <div class="space-y-2">
-                <span class="bg-brand-gold text-gray-900 text-xs font-black uppercase px-3 py-1 rounded-full">Martes y Jueves de Locura</span>
-                <h3 class="font-display font-black text-2xl sm:text-3xl">¡Por la compra de 1 Pollo Entero lleva GRATIS 6 Arepas y Ají de la Casa!</h3>
-                <p class="text-red-100 text-sm sm:text-base">Válido para pedidos en restaurante y domicilios por WhatsApp.</p>
-            </div>
-            <a href="#menu" class="shrink-0 bg-white text-brand-red hover:bg-brand-gold hover:text-gray-900 font-display font-extrabold px-7 py-3.5 rounded-2xl shadow-lg transition-colors">
-                Aprovechar Promo
-            </a>
+        <div class="info-card">
+          <div class="info-icon"><i class="fas fa-clock"></i></div>
+          <h3>Horarios</h3>
+          <p><strong>Lun - Jue:</strong> 11:30 AM - 10:00 PM<br><strong>Vie - Dom:</strong> 11:30 AM - 11:30 PM</p>
         </div>
-    </section>
-
-    <!-- =========================================================================
-         5. GALERÍA DE FOTOS CON VISTA PREVIA (MODAL)
-         ========================================================================= -->
-    <section id="galeria" class="py-16 sm:py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <span class="text-brand-red font-bold uppercase tracking-widest text-sm">Se te va a hacer agua la boca</span>
-                <h2 class="font-display font-black text-3xl sm:text-4xl text-gray-900 mt-2">
-                    Nuestros Platos Estrella
-                </h2>
-                <p class="text-gray-600 mt-3">Haz clic en cualquier imagen para verla en grande.</p>
-            </div>
-
-            <!-- Grid de Galería -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-                <!-- Foto 1 -->
-                <div onclick="openImageModal('https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=1200&q=85', 'Pollo Broaster Extra Crujiente con especias secretas')" class="group relative rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square">
-                    <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=600&q=80" alt="Pollo Broaster Crujiente" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x600/D90429/FFFFFF?text=Pollo+Broaster'">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                        <p class="text-white font-semibold text-sm">Broaster Dorado</p>
-                    </div>
-                </div>
-
-                <!-- Foto 2 -->
-                <div onclick="openImageModal('https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=1200&q=85', 'Pollo Asado al Carbón marinado por 24 horas')" class="group relative rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square">
-                    <img src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=600&q=80" alt="Pollo Asado al Carbón" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x600/B91C1C/FFFFFF?text=Pollo+Asado'">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                        <p class="text-white font-semibold text-sm">Asado al Carbón</p>
-                    </div>
-                </div>
-
-                <!-- Foto 3 -->
-                <div onclick="openImageModal('https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=1200&q=85', 'Alitas BBQ y Miel Mostaza bañadas al momento')" class="group relative rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square">
-                    <img src="https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=600&q=80" alt="Alitas BBQ" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x600/D90429/FFFFFF?text=Alitas+BBQ'">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                        <p class="text-white font-semibold text-sm">Alitas Hermanos</p>
-                    </div>
-                </div>
-
-                <!-- Foto 4 -->
-                <div onclick="openImageModal('https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=1200&q=85', 'Papas a la Francesa crujientes y doraditas')" class="group relative rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square">
-                    <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80" alt="Papas Fritas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x600/FFB703/111111?text=Papas+Crujientes'">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                        <p class="text-white font-semibold text-sm">Papas Crocantes</p>
-                    </div>
-                </div>
-            </div>
+        <div class="info-card">
+          <div class="info-icon"><i class="fab fa-whatsapp"></i></div>
+          <h3>Domicilios</h3>
+          <p>+57 300 123 4567<br>Envío gratis en compras mayores a $40.000</p>
         </div>
-    </section>
+      </div>
 
-    <!-- =========================================================================
-         6. HORARIOS, UBICACIÓN Y CONTACTO
-         ========================================================================= -->
-    <section id="ubicacion" class="py-16 sm:py-24 bg-brand-light border-t border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-14">
-                <span class="text-brand-red font-bold uppercase tracking-widest text-sm">Visítanos o Pide a Domicilio</span>
-                <h2 class="font-display font-black text-3xl sm:text-4xl text-gray-900 mt-2">
-                    Horarios y Ubicación
-                </h2>
-            </div>
+      <!-- Mapa embebido -->
+      <div class="map-container">
+        <iframe 
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-74.085%2C4.605%2C-74.065%2C4.615&amp;layer=mapnik" 
+          title="Ubicación Pollos Hermanos"
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </section>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                
-                <!-- Tarjeta 1: Horarios -->
-                <div class="bg-white rounded-3xl p-8 shadow-md border border-gray-100 flex flex-col justify-between">
-                    <div>
-                        <div class="w-14 h-14 bg-red-50 text-brand-red rounded-2xl flex items-center justify-center mb-6">
-                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        </div>
-                        <h3 class="font-display font-bold text-xl text-gray-900 mb-4">Horarios de Atención</h3>
-                        <ul class="space-y-3 text-gray-600 text-sm">
-                            <li class="flex justify-between border-b border-gray-100 pb-2">
-                                <span class="font-medium">Lunes a Jueves:</span>
-                                <span class="font-bold text-gray-900">11:30 AM - 9:30 PM</span>
-                            </li>
-                            <li class="flex justify-between border-b border-gray-100 pb-2">
-                                <span class="font-medium">Viernes y Sábado:</span>
-                                <span class="font-bold text-brand-red">11:30 AM - 11:00 PM</span>
-                            </li>
-                            <li class="flex justify-between">
-                                <span class="font-medium">Domingos y Festivos:</span>
-                                <span class="font-bold text-gray-900">11:00 AM - 9:00 PM</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-gray-100 flex items-center gap-2 text-xs font-semibold text-green-600">
-                        <span class="w-2.5 h-2.5 bg-green-500 rounded-full animate-ping"></span>
-                        <span>Servicio de domicilios activo todos los días</span>
-                    </div>
-                </div>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <h3><i class="fas fa-drumstick-bite"></i> POLLOS HERMANOS</h3>
+        <p>El verdadero sabor del pollo crujiente y asado.</p>
+      </div>
+      <div class="social-links">
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Pollos Hermanos. Todos los derechos reservados.</p>
+    </div>
+  </footer>
 
-                <!-- Tarjeta 2: Dirección y Contacto -->
-                <div class="bg-white rounded-3xl p-8 shadow-md border border-gray-100 flex flex-col justify-between">
-                    <div>
-                        <div class="w-14 h-14 bg-red-50 text-brand-red rounded-2xl flex items-center justify-center mb-6">
-                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                        </div>
-                        <h3 class="font-display font-bold text-xl text-gray-900 mb-4">Sede Principal</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                            <strong>Av. Principal # 45 - 20, Local 101</strong><br>
-                            Barrio El Poblado / Zona Gastronómica<br>
-                            Frente al Parque Central.
-                        </p>
-                        <div class="space-y-2 text-sm">
-                            <p class="text-gray-700"><strong>📞 Teléfono Fijo:</strong> (601) 555-0192</p>
-                            <p class="text-gray-700"><strong>📱 WhatsApp:</strong> +57 300 123 4567</p>
-                        </div>
-                    </div>
-                    <div class="mt-6">
-                        <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 bg-gray-900 hover:bg-brand-red text-white font-semibold py-3 px-4 rounded-xl text-sm transition-colors">
-                            <span>Abrir en Google Maps</span>
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                        </a>
-                    </div>
-                </div>
+  <!-- BOTÓN FLOTANTE DE WHATSAPP DIRECTO -->
+  <a href="https://wa.me/573001234567?text=Hola%20Pollos%20Hermanos,%20quiero%20hacer%20una%20consulta" target="_blank" class="whatsapp-float" aria-label="Contactar por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
-                <!-- Tarjeta 3: Mapa Visual Interactivo -->
-                <div class="bg-white rounded-3xl overflow-hidden shadow-md border border-gray-100 min-h-[280px] relative">
-                    <iframe 
-                        title="Mapa de ubicación Pollos Hermanos"
-                        src="https://www.openstreetmap.org/export/embed.html?bbox=-74.0850%2C4.6000%2C-74.0650%2C4.6150&amp;layer=mapnik&amp;marker=4.6075%2C-74.0750" 
-                        class="w-full h-full border-0 min-h-[280px]"
-                        loading="lazy">
-                    </iframe>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- =========================================================================
-         7. FOOTER (PIE DE PÁGINA)
-         ========================================================================= -->
-    <footer class="bg-gray-950 text-gray-300 pt-14 pb-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10 border-b border-gray-800">
-                
-                <!-- Marca -->
-                <div class="space-y-4">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 bg-brand-red rounded-xl flex items-center justify-center">
-                            <span class="text-white font-display font-black text-lg">PH</span>
-                        </div>
-                        <span class="font-display font-black text-xl text-white">POLLOS HERMANOS</span>
-                    </div>
-                    <p class="text-sm text-gray-400 leading-relaxed">
-                        Tradición familiar en cada presa. Pollo seleccionado de la mejor calidad, marinado con nuestra receta secreta de especias y preparado al instante.
-                    </p>
-                </div>
-
-                <!-- Enlaces Rápidos -->
-                <div>
-                    <h4 class="font-display font-bold text-white uppercase tracking-wider text-sm mb-4">Navegación</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#inicio" class="hover:text-brand-gold transition-colors">Inicio</a></li>
-                        <li><a href="#menu" class="hover:text-brand-gold transition-colors">Menú Digital</a></li>
-                        <li><a href="#galeria" class="hover:text-brand-gold transition-colors">Galería de Platos</a></li>
-                        <li><a href="#ubicacion" class="hover:text-brand-gold transition-colors">Horarios y Ubicación</a></li>
-                    </ul>
-                </div>
-
-                <!-- Redes Sociales -->
-                <div>
-                    <h4 class="font-display font-bold text-white uppercase tracking-wider text-sm mb-4">Síguenos en Redes</h4>
-                    <p class="text-sm text-gray-400 mb-4">Entérate de nuestros combos relámpago y concursos semanales.</p>
-                    <div class="flex gap-3">
-                        <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-brand-red text-white flex items-center justify-center transition-colors">
-                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                        </a>
-                        <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-brand-red text-white flex items-center justify-center transition-colors">
-                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
-                        </a>
-                        <a href="#" aria-label="TikTok" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-brand-red text-white flex items-center justify-center transition-colors">
-                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500 gap-4">
-                <p>&copy; 2026 Pollos Hermanos. Todos los derechos reservados.</p>
-                <p>Hecho con 🔥 y listo para desplegar en GitHub Pages.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- =========================================================================
-         8. BOTÓN FLOTANTE DE WHATSAPP (SIEMPRE VISIBLE)
-         ========================================================================= -->
-    <button onclick="pedirDirectoWhatsApp()" aria-label="Chatear por WhatsApp" class="fixed bottom-6 right-6 z-40 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl whatsapp-pulse transition-transform hover:scale-110 cursor-pointer flex items-center gap-2">
-        <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/></svg>
-        <span class="hidden md:inline font-bold text-sm pr-1">¿Hambre? Pide ya</span>
-    </button>
-
-    <!-- =========================================================================
-         9. CARRITO DE COMPRAS DESLIZANTE (DRAWER MODAL)
-         ========================================================================= -->
-    <div id="cart-drawer" class="fixed inset-0 z-50 hidden">
-        <!-- Fondo oscuro con desenfoque -->
-        <div onclick="toggleCart()" class="absolute inset-0 bg-black/60 backdrop-blur-xs transition-opacity"></div>
-        
-        <!-- Panel lateral derecho -->
-        <div class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col justify-between">
-            
-            <!-- Cabecera del Carrito -->
-            <div class="p-6 bg-brand-red text-white flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                    <span class="text-2xl">🛒</span>
-                    <div>
-                        <h3 class="font-display font-bold text-lg leading-none">Tu Pedido</h3>
-                        <p class="text-xs text-red-100 mt-1">Pollos Hermanos a Domicilio</p>
-                    </div>
-                </div>
-                <button onclick="toggleCart()" class="p-2 rounded-xl hover:bg-white/20 transition-colors cursor-pointer" aria-label="Cerrar carrito">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
-            </div>
-
-            <!-- Lista de Productos en el Carrito -->
-            <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-4">
-                <!-- Se llena dinámicamente con JS -->
-            </div>
-
-            <!-- Formulario de Entrega y Botón de Envío a WhatsApp -->
-            <div class="p-6 bg-gray-50 border-t border-gray-200 space-y-4">
-                
-                <!-- Datos rápidos del cliente -->
-                <div class="space-y-2.5">
-                    <input type="text" id="customer-name" placeholder="Tu Nombre (Ej. Carlos Pérez)" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:border-brand-red bg-white">
-                    <input type="text" id="customer-address" placeholder="Dirección de entrega (Ej. Calle 10 # 20-30)" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:border-brand-red bg-white">
-                    <select id="payment-method" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:border-brand-red bg-white text-gray-700">
-                        <option value="Efectivo contra entrega">💵 Pago en Efectivo contra entrega</option>
-                        <option value="Transferencia Nequi / Daviplata">📱 Transferencia Nequi / Daviplata</option>
-                        <option value="Datáfono en domicilio">💳 Datáfono (Tarjeta) en domicilio</option>
-                    </select>
-                </div>
-
-                <!-- Total -->
-                <div class="flex justify-between items-center pt-2 border-t border-gray-200">
-                    <span class="font-semibold text-gray-600">Total a pagar:</span>
-                    <span id="cart-total" class="font-display font-black text-2xl text-brand-red">$0</span>
-                </div>
-
-                <!-- Botón WhatsApp -->
-                <button onclick="checkoutWhatsApp()" class="w-full bg-green-500 hover:bg-green-600 text-white font-display font-bold py-3.5 px-6 rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer">
-                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/></svg>
-                    <span>Enviar Pedido por WhatsApp</span>
-                </button>
-            </div>
-        </div>
+  <!-- MODAL / DRAWER DEL CARRITO -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h3>Tu Pedido <i class="fas fa-shopping-bag"></i></h3>
+      <button class="close-cart" id="close-cart-btn"><i class="fas fa-times"></i></button>
     </div>
 
-    <!-- =========================================================================
-         10. MODAL DE VISTA PREVIA PARA LA GALERÍA Y NOTIFICACIONES TOAST
-         ========================================================================= -->
-    <div id="image-modal" onclick="closeImageModal()" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-sm flex items-center justify-center p-4">
-        <div onclick="event.stopPropagation()" class="relative max-w-3xl w-full bg-white rounded-3xl overflow-hidden shadow-2xl">
-            <button onclick="closeImageModal()" class="absolute top-4 right-4 bg-black/60 hover:bg-brand-red text-white p-2 rounded-full transition-colors cursor-pointer">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
-            <img id="modal-img" src="" alt="Vista previa" class="w-full max-h-[75vh] object-cover">
-            <div class="p-5 bg-white">
-                <p id="modal-caption" class="font-display font-bold text-gray-900 text-lg"></p>
-            </div>
-        </div>
+    <div class="cart-items" id="cart-items">
+      <p class="empty-cart-msg">Tu carrito está vacío. ¡Agrega algo delicioso del menú!</p>
     </div>
 
-    <!-- Notificación Toast Flotante (Reemplaza alert() de forma elegante) -->
-    <div id="toast-notification" class="fixed bottom-24 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none bg-gray-900 text-white px-5 py-3.5 rounded-2xl shadow-xl flex items-center gap-3 border border-gray-700">
-        <span id="toast-icon" class="text-xl">✅</span>
-        <span id="toast-message" class="text-sm font-medium">Producto agregado al pedido</span>
+    <div class="cart-footer">
+      <div class="customer-form">
+        <input type="text" id="customer-name" placeholder="Tu nombre completo *" required>
+        <input type="text" id="customer-address" placeholder="Dirección de entrega (o 'Recoger en local') *" required>
+        <input type="text" id="customer-notes" placeholder="Notas (ej. sin salsa, cambio de $50k)">
+      </div>
+      <div class="cart-total">
+        <span>Total a pagar:</span>
+        <strong id="cart-total">$0</strong>
+      </div>
+      <button class="btn btn-whatsapp btn-block" id="send-whatsapp-btn">
+        <i class="fab fa-whatsapp"></i> Enviar Pedido por WhatsApp
+      </button>
     </div>
+  </aside>
 
-    <!-- =========================================================================
-         11. LÓGICA JAVASCRIPT (CONFIGURACIÓN, MENÚ, CARRITO Y WHATSAPP)
-         ========================================================================= -->
-    <script>
-        /**
-         * =====================================================================
-         * CONFIGURACIÓN DEL NEGOCIO (EDITA ESTOS DATOS CON LOS TUYOS)
-         * =====================================================================
-         */
-        const CONFIG_NEGOCIO = {
-            nombre: "Pollos Hermanos",
-            // IMPORTANTE: Escribe tu número de WhatsApp con código de país sin signos '+' ni espacios.
-            // Ejemplo Colombia: 573001234567 | Ejemplo México: 5215512345678
-            telefonoWhatsApp: "573001234567",
-            moneda: "$"
-        };
+  <!-- Toast de notificación -->
+  <div class="toast" id="toast">Producto agregado al pedido 🍗</div>
 
-        /**
-         * =====================================================================
-         * BASE DE DATOS DE PRODUCTOS DEL MENÚ
-         * Puedes agregar, quitar o cambiar precios e imágenes fácilmente aquí.
-         * =====================================================================
-         */
-        const PRODUCTOS_MENU = [
-            {
-                id: 1,
-                nombre: "Pollo Broaster Entero (8 Presas)",
-                categoria: "broaster",
-                precio: 42000,
-                descripcion: "8 presas súper crujientes por fuera y jugosas por dentro, acompañadas de papas a la francesa, 4 arepas y miel.",
-                imagen: "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=700&q=80",
-                etiqueta: "⭐ Favorito"
-            },
-            {
-                id: 2,
-                nombre: "Medio Pollo Broaster (4 Presas)",
-                categoria: "broaster",
-                precio: 23000,
-                descripcion: "4 presas de pollo apanado crocante con porción personal de papas fritas, 2 arepas y salsa de la casa.",
-                imagen: "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=700&q=80",
-                etiqueta: ""
-            },
-            {
-                id: 3,
-                nombre: "Pollo Asado al Carbón Entero",
-                categoria: "asado",
-                precio: 39000,
-                descripcion: "Marinado por 24 horas en hierbas y especias de la casa, dorado lentamente. Incluye papa salada, arepas y ají.",
-                imagen: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=700&q=80",
-                etiqueta: "🔥 Receta Original"
-            },
-            {
-                id: 4,
-                nombre: "Medio Pollo Asado Tradicional",
-                categoria: "asado",
-                precio: 21000,
-                descripcion: "Jugoso medio pollo asado acompañado de 4 papas saladas, 2 arepas doradas y nuestro ají casero.",
-                imagen: "https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=700&q=80",
-                etiqueta: ""
-            },
-            {
-                id: 5,
-                nombre: "Combo Familiar Hermanos (12 Presas)",
-                categoria: "combos",
-                precio: 64000,
-                descripcion: "¡Para compartir! 12 presas (mitad broaster, mitad asado), 2 porciones grandes de papas, 6 arepas y Gaseosa 1.5L.",
-                imagen: "https://images.unsplash.com/photo-1513639776629-7b61b0ac49cb?auto=format&fit=crop&w=700&q=80",
-                etiqueta: "💥 Ahorra $8.000"
-            },
-            {
-                id: 6,
-                nombre: "Alitas Hermanos x 12 Unidades",
-                categoria: "combos",
-                precio: 28000,
-                descripcion: "12 alitas crocantes bañadas en salsa BBQ Ahumada, Miel Mostaza o Picante. Incluye papas a la francesa.",
-                imagen: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=700&q=80",
-                etiqueta: "🌶️ Salsas a elección"
-            },
-            {
-                id: 7,
-                nombre: "Porción Grande de Papas Francesas",
-                categoria: "acompanamientos",
-                precio: 8500,
-                descripcion: "Papas bastón doradas y crujientes con toque de sal marina y salsa rosada.",
-                imagen: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=700&q=80",
-                etiqueta: ""
-            },
-            {
-                id: 8,
-                nombre: "Arepas con Queso x 4 Unidades",
-                categoria: "acompanamientos",
-                precio: 7000,
-                descripcion: "Arepas de maíz blanco asadas a la plancha rellenas de queso campesino derretido.",
-                imagen: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=700&q=80",
-                etiqueta: ""
-            },
-            {
-                id: 9,
-                nombre: "Gaseosa Familiar 1.5 Litros",
-                categoria: "acompanamientos",
-                precio: 7500,
-                descripcion: "Bebida refrescante bien fría (Coca-Cola, Postobón Manzana o Colombiana).",
-                imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=700&q=80",
-                etiqueta: ""
-            }
-        ];
-
-        // Estado del carrito de compras
-        let carrito = [];
-
-        /**
-         * Formatea números a moneda local (ej: 38000 -> $38.000)
-         */
-        function formatearPrecio(valor) {
-            return CONFIG_NEGOCIO.moneda + valor.toLocaleString('es-CO');
-        }
-
-        /**
-         * Renderiza las tarjetas del menú según la categoría seleccionada
-         */
-        function renderizarMenu(categoria = 'todos') {
-            const contenedor = document.getElementById('menu-grid');
-            contenedor.innerHTML = '';
-
-            const filtrados = categoria === 'todos' 
-                ? PRODUCTOS_MENU 
-                : PRODUCTOS_MENU.filter(prod => prod.categoria === categoria);
-
-            filtrados.forEach(producto => {
-                const badgeHTML = producto.etiqueta 
-                    ? `<span class="absolute top-3 left-3 bg-brand-gold text-gray-900 text-xs font-extrabold px-3 py-1 rounded-full shadow-md">${producto.etiqueta}</span>` 
-                    : '';
-
-                const card = `
-                    <article class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl border border-gray-100 transition-all duration-300 flex flex-col justify-between group">
-                        <div>
-                            <div class="relative h-56 overflow-hidden bg-gray-100">
-                                <img 
-                                    src="${producto.imagen}" 
-                                    alt="${producto.nombre}" 
-                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                    onerror="this.src='https://placehold.co/600x400/D90429/FFFFFF?text=${encodeURIComponent(producto.nombre)}'"
-                                >
-                                ${badgeHTML}
-                            </div>
-                            <div class="p-6">
-                                <div class="flex justify-between items-start gap-2">
-                                    <h3 class="font-display font-bold text-lg text-gray-900 leading-snug">${producto.nombre}</h3>
-                                </div>
-                                <p class="text-gray-500 text-sm mt-2 leading-relaxed">${producto.descripcion}</p>
-                            </div>
-                        </div>
-
-                        <div class="px-6 pb-6 pt-2 flex items-center justify-between border-t border-gray-50">
-                            <div>
-                                <span class="text-xs text-gray-400 block">Precio</span>
-                                <span class="font-display font-black text-xl text-brand-red">${formatearPrecio(producto.precio)}</span>
-                            </div>
-                            <button onclick="agregarAlCarrito(${producto.id})" class="bg-brand-red hover:bg-brand-darkRed text-white font-semibold text-sm px-4 py-2.5 rounded-xl shadow-md shadow-red-500/20 transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer">
-                                <span>+ Agregar</span>
-                            </button>
-                        </div>
-                    </article>
-                `;
-                contenedor.innerHTML += card;
-            });
-        }
-
-        /**
-         * Filtra el menú y actualiza el estado visual de los botones
-         */
-        function filterMenu(categoria) {
-            const botones = document.querySelectorAll('.filter-btn');
-            botones.forEach(btn => {
-                if (btn.dataset.category === categoria) {
-                    btn.classList.remove('bg-white', 'text-gray-700', 'border', 'border-gray-200');
-                    btn.classList.add('bg-brand-red', 'text-white', 'shadow-md');
-                } else {
-                    btn.classList.remove('bg-brand-red', 'text-white', 'shadow-md');
-                    btn.classList.add('bg-white', 'text-gray-700', 'border', 'border-gray-200');
-                }
-            });
-            renderizarMenu(categoria);
-        }
-
-        /**
-         * Agrega un producto al carrito o incrementa su cantidad
-         */
-        function agregarAlCarrito(idProducto) {
-            const producto = PRODUCTOS_MENU.find(p => p.id === idProducto);
-            if (!producto) return;
-
-            const itemExistente = carrito.find(item => item.id === idProducto);
-            if (itemExistente) {
-                itemExistente.cantidad += 1;
-            } else {
-                carrito.push({ ...producto, cantidad: 1 });
-            }
-
-            actualizarCarritoUI();
-            mostrarToast(`🍗 "${producto.nombre}" agregado a tu pedido`);
-        }
-
-        /**
-         * Modifica la cantidad de un producto dentro del carrito (+1 o -1)
-         */
-        function cambiarCantidad(idProducto, delta) {
-            const index = carrito.findIndex(item => item.id === idProducto);
-            if (index === -1) return;
-
-            carrito[index].cantidad += delta;
-            if (carrito[index].cantidad <= 0) {
-                carrito.splice(index, 1);
-            }
-            actualizarCarritoUI();
-        }
-
-        /**
-         * Actualiza el contador superior y el contenido del panel lateral del carrito
-         */
-        function actualizarCarritoUI() {
-            const badge = document.getElementById('cart-badge');
-            const contenedor = document.getElementById('cart-items-container');
-            const totalElemento = document.getElementById('cart-total');
-
-            const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
-            const totalPrecio = carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
-
-            badge.textContent = totalItems;
-            totalElemento.textContent = formatearPrecio(totalPrecio);
-
-            if (carrito.length === 0) {
-                contenedor.innerHTML = `
-                    <div class="text-center py-12 space-y-3">
-                        <span class="text-5xl block">🍽️</span>
-                        <p class="font-display font-bold text-gray-700">Tu carrito está vacío</p>
-                        <p class="text-sm text-gray-500">Explora nuestro menú y agrega tus platos favoritos.</p>
-                    </div>
-                `;
-                return;
-            }
-
-            contenedor.innerHTML = carrito.map(item => `
-                <div class="flex items-center justify-between gap-3 bg-white p-3.5 rounded-2xl border border-gray-100 shadow-xs">
-                    <img src="${item.imagen}" alt="${item.nombre}" class="w-16 h-16 rounded-xl object-cover shrink-0" onerror="this.src='https://placehold.co/100x100/D90429/FFFFFF?text=PH'">
-                    <div class="flex-1 min-w-0">
-                        <h4 class="font-bold text-sm text-gray-900 truncate">${item.nombre}</h4>
-                        <p class="text-brand-red font-bold text-sm mt-0.5">${formatearPrecio(item.precio * item.cantidad)}</p>
-                    </div>
-                    <div class="flex items-center gap-2 bg-gray-100 rounded-xl p-1">
-                        <button onclick="cambiarCantidad(${item.id}, -1)" class="w-7 h-7 rounded-lg bg-white text-gray-800 font-bold shadow-xs hover:bg-red-50 hover:text-brand-red cursor-pointer">-</button>
-                        <span class="text-sm font-bold w-5 text-center">${item.cantidad}</span>
-                        <button onclick="cambiarCantidad(${item.id}, 1)" class="w-7 h-7 rounded-lg bg-white text-gray-800 font-bold shadow-xs hover:bg-red-50 hover:text-brand-red cursor-pointer">+</button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        /**
-         * Genera el mensaje formateado y abre WhatsApp con el pedido completo
-         */
-        function checkoutWhatsApp() {
-            if (carrito.length === 0) {
-                mostrarToast("⚠️ Agrega al menos un producto antes de enviar el pedido", "❌");
-                return;
-            }
-
-            const nombre = document.getElementById('customer-name').value.trim() || "Cliente Web";
-            const direccion = document.getElementById('customer-address').value.trim() || "Por confirmar";
-            const metodoPago = document.getElementById('payment-method').value;
-
-            let mensaje = `¡Hola *${CONFIG_NEGOCIO.nombre}*! 🍗🔥 Quiero hacer el siguiente pedido:\n\n`;
-            
-            carrito.forEach(item => {
-                mensaje += `▪️ *${item.cantidad}x* ${item.nombre} (${formatearPrecio(item.precio * item.cantidad)})\n`;
-            });
-
-            const total = carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
-            
-            mensaje += `\n💰 *Total a pagar:* ${formatearPrecio(total)}\n`;
-            mensaje += `👤 *Nombre:* ${nombre}\n`;
-            mensaje += `📍 *Dirección:* ${direccion}\n`;
-            mensaje += `💳 *Pago:* ${metodoPago}\n\n`;
-            mensaje += `¡Muchas gracias!`;
-
-            const urlWhatsApp = `https://wa.me/${CONFIG_NEGOCIO.telefonoWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-            window.open(urlWhatsApp, '_blank');
-        }
-
-        /**
-         * Botón rápido de WhatsApp (cuando el usuario quiere escribir sin usar carrito)
-         */
-        function pedirDirectoWhatsApp() {
-            if (carrito.length > 0) {
-                toggleCart();
-                return;
-            }
-            const texto = `¡Hola *${CONFIG_NEGOCIO.nombre}*! 🍗 Quisiera información sobre el menú y hacer un pedido a domicilio.`;
-            window.open(`https://wa.me/${CONFIG_NEGOCIO.telefonoWhatsApp}?text=${encodeURIComponent(texto)}`, '_blank');
-        }
-
-        /**
-         * Controles de Interfaz (Abrir/Cerrar Carrito, Menú Móvil, Modal Galería y Toast)
-         */
-        function toggleCart() {
-            const drawer = document.getElementById('cart-drawer');
-            drawer.classList.toggle('hidden');
-        }
-
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-
-        function openImageModal(src, caption) {
-            document.getElementById('modal-img').src = src;
-            document.getElementById('modal-caption').textContent = caption;
-            document.getElementById('image-modal').classList.remove('hidden');
-        }
-
-        function closeImageModal() {
-            document.getElementById('image-modal').classList.add('hidden');
-        }
-
-        let toastTimeout;
-        function mostrarToast(mensaje, icono = "✅") {
-            const toast = document.getElementById('toast-notification');
-            document.getElementById('toast-message').textContent = mensaje;
-            document.getElementById('toast-icon').textContent = icono;
-
-            toast.classList.remove('translate-y-20', 'opacity-0');
-            clearTimeout(toastTimeout);
-            toastTimeout = setTimeout(() => {
-                toast.classList.add('translate-y-20', 'opacity-0');
-            }, 2800);
-        }
-
-        // Inicializar la página al cargar
-        document.addEventListener('DOMContentLoaded', () => {
-            renderizarMenu('todos');
-            actualizarCarritoUI();
-        });
-    </script>
+  <!-- Script JS -->
+  <script src="script.js"></script>
 </body>
 </html>
